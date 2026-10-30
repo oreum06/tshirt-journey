@@ -1,9 +1,7 @@
 import { forwardRef, useRef, useState } from 'react';
-import { CHECKLIST, CREDITS, EXCHANGED_COUNT, INSTAGRAM_URL, PARTY_FORM_URL, SOURCES, WATER_TEE } from '../data/chapters';
+import { AUTHOR, CHECKLIST, CREDITS, priceOf, EXCHANGED_COUNT, INSTAGRAM_URL, PARTY_FORM_URL, SOURCES, WATER_TEE } from '../data/chapters';
 import { useJourney } from '../state';
 import { track } from '../lib/analytics';
-
-const won = (n: number) => `₩${n.toLocaleString('ko-KR')}`;
 
 interface Lines {
   price: number;
@@ -14,7 +12,7 @@ interface Lines {
 /** 영수증 본문 — 화면용과 9:16 저장용이 같은 마크업을 쓴다 */
 const ReceiptPaper = forwardRef<HTMLDivElement, Lines & { story?: boolean }>(function ReceiptPaper({ price, wears, exchange, story }, ref) {
   const rows: [string, string][] = [
-    ['가격', won(price)],
+    ['가격', priceOf(price).receipt],
     ['물', `${WATER_TEE.toLocaleString('ko-KR')}L (약 2년 반 식수)`],
     ['에너지', '석탄·가스'],
     ['노동', '표기 없는 비용'],
@@ -179,6 +177,7 @@ export function Receipt() {
           </ul>
         )}
         <p className="credits">{CREDITS}</p>
+        <p className="author">{AUTHOR}</p>
         {import.meta.env.VITE_GA_ID && <p>익명 방문 통계(GA4)만 사용하며, 이름·연락처는 수집하지 않아요.</p>}
         <button type="button" className="link-btn" onClick={() => goTo(0)}>
           처음부터 다시 보기 ↑

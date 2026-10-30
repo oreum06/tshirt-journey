@@ -427,6 +427,33 @@ a {
   background: var(--ink-900);
   color: #fff;
 }
+.chips {
+  flex-direction: column;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  border-radius: 14px;
+  text-align: left;
+}
+.chip-note {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-500);
+}
+.chip.is-on .chip-note {
+  color: #d9d4ca;
+}
+.author {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  opacity: 0.85;
+}
 .passport-issued {
   margin-top: 16px;
   animation: pulse 400ms ease-out;

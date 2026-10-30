@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { PARTY_STAT, PRICES } from '../data/chapters';
+import { PARTY_STAT, PRICES, priceOf } from '../data/chapters';
 import { useJourney } from '../state';
 import { track } from '../lib/analytics';
 import { StatCard } from './StatCard';
-
-const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
 
 /** 화면에 들어오면 is-in 클래스 — 1회성 CSS 연출용 */
 export function useInView<T extends Element>(threshold = 0.5) {
@@ -37,24 +35,25 @@ export function PriceChips() {
       <div className="chips" role="radiogroup" aria-label="티셔츠 가격">
         {PRICES.map((p) => (
           <button
-            key={p}
+            key={p.value}
             type="button"
             role="radio"
-            aria-checked={picked && price === p}
-            className={`chip ${picked && price === p ? 'is-on' : ''}`}
+            aria-checked={picked && price === p.value}
+            className={`chip ${picked && price === p.value ? 'is-on' : ''}`}
             onClick={() => {
-              setPrice(p);
+              setPrice(p.value);
               setPicked(true);
             }}
           >
-            {won(p)}
+            <span className="chip-label">{p.label}</span>
+            <span className="chip-note">{p.note}</span>
           </button>
         ))}
       </div>
       {picked && (
         <div className="passport-issued">
           <p>
-            여권이 발급됐어요. <b>{won(price)}</b>짜리 티셔츠의 여행을 시작해요.
+            여권이 발급됐어요. <b>{priceOf(price).label}</b>짜리 티셔츠의 여행을 시작해요.
           </p>
           <button type="button" className="cta cta--primary" onClick={() => goTo(1)}>
             여행 시작 ↓

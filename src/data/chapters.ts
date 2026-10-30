@@ -89,8 +89,25 @@ export interface Chapter {
   cards: Card[];
 }
 
-export const PRICES = [4900, 9900, 19900] as const;
+export interface PriceOption {
+  value: number;
+  /** 가격 칩·여권 문구 */
+  label: string;
+  /** 칩 아래 설명 */
+  note: string;
+  /** 가격표(스테이지 태그)용 짧은 표기 */
+  tag: string;
+  /** 영수증 표기 */
+  receipt: string;
+}
+
+export const PRICES: PriceOption[] = [
+  { value: 9900, label: '9,900원', note: '쇼핑몰·쉬인 할인가 수준', tag: '₩9,900', receipt: '₩9,900' },
+  { value: 12900, label: '12,900원', note: 'SPA 브랜드 정가 수준', tag: '₩12,900', receipt: '₩12,900' },
+  { value: 100000, label: '10만 원 이상', note: '고가 브랜드', tag: '₩10만+', receipt: '₩100,000 이상' },
+];
 export const DEFAULT_PRICE = 9900;
+export const priceOf = (value: number) => PRICES.find((p) => p.value === value) ?? PRICES[0];
 export const DEFAULT_WEARS = 7;
 
 /** 21% 파티 신청 구글 폼 — 열린 질문: 링크 확정 시 교체 */
@@ -336,3 +353,5 @@ export const PARTY_STAT: Stat = {
 export const CHECKLIST = ['장바구니 3일 기다리기', '한 벌을 30번 입기', '안 입는 옷은 수거함 대신 교환'];
 
 export const CREDITS = '공공칠빵(7팀) · 사회공헌 프로젝트 해결안 2 (SDG 12.8)';
+/** 제작자 표기 — 첫 화면과 페이지 맨 아래에 회색 작은 글씨로 */
+export const AUTHOR = '사회공헌프로젝트 7팀 20252907김서현';

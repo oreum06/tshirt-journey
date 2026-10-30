@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Shirt, type ShirtState } from './Shirt';
 import type { Ending } from '../state';
+import { priceOf } from '../data/chapters';
 
 // 스테이지: 티셔츠는 제자리에 고정, 배경색과 장면 레이어만 바뀐다 (PRD 6.7, F-02)
 // 챕터 안 스크럽 애니메이션은 --p0 ~ --p9 (0~1) CSS 변수로 구동 — transform·opacity만 사용
@@ -47,7 +48,7 @@ export const Stage = forwardRef<HTMLDivElement, Props>(function Stage({ active, 
 
         <g className="stage-shirt">
           <g className="stage-shirt-inner">
-            <Shirt state={shirtState} price={`₩${price.toLocaleString('ko-KR')}`} />
+            <Shirt state={shirtState} price={priceOf(price).tag} />
           </g>
         </g>
 

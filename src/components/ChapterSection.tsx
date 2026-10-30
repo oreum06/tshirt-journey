@@ -1,4 +1,4 @@
-import type { Card, Chapter } from '../data/chapters';
+import { AUTHOR, type Card, type Chapter } from '../data/chapters';
 import { StatCard } from './StatCard';
 import { Bars, Branch, ClosetGrid, Drops, PriceChips, Streams, WearSlider, useInView } from './Widgets';
 import { Receipt } from './Receipt';
@@ -73,6 +73,7 @@ export function ChapterSection({ chapter }: { chapter: Chapter }) {
             약 3분 · 소리 없이 볼 수 있어요 <span className="hint-arrow" aria-hidden>↓</span>
           </p>
         )}
+        {chapter.id === 0 && <p className="author">{AUTHOR}</p>}
       </header>
       {chapter.cards.map((card, i) => (
         <NarrationCard key={i} card={card} chapter={chapter} />
