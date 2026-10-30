@@ -1,0 +1,62 @@
+/* PRD 6.2 컬러 · 6.4 타이포 · 6.7 간격 토큰 */
+@font-face {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/MaruBuri-Bold.subset.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'D2Coding';
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/D2Coding.subset.woff2') format('woff2');
+}
+
+:root {
+  --cotton-50: #f7f4ee;
+  --ink-900: #1c1b19;
+  --ink-500: #6e6a63;
+  --sdg6-water: #26bde2;
+  --sdg6-text: #0b7a99;
+  --dye-indigo: #2e2a5c;
+  --sdg7-energy: #fcc30b;
+  --smog-400: #9a948a;
+  --sdg12-consume: #bf8b2e;
+  --ember-600: #d9541e;
+  --stamp-red: #c8372d;
+  --renew-green: #2f8f5b;
+  --renew-green-ink: #23744a;
+
+  /* 어두운 배경에서 쓰는 글자색 */
+  --paper-100: #f4f0e8;
+  --paper-300: #c9c2b6;
+
+  --font-display: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: 'MaruBuri', 'Nanum Myeongjo', serif;
+  --font-mono: 'D2Coding', ui-monospace, Menlo, monospace;
+
+  --hud-h: 56px;
+  --dots-h: 22px;
+  --header-h: calc(var(--hud-h) + var(--dots-h));
+  --gutter: 20px;
+  --radius: 16px;
+
+  --fs-display: 64px;
+  --fs-h1: 30px;
+  --fs-h2: 22px;
+  --fs-body: 17px;
+  --fs-unit: 15px;
+  --fs-caption: 13px;
+  --fs-mono: 14px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-display: 112px;
+    --fs-h1: 44px;
+    --fs-h2: 28px;
+    --fs-body: 18px;
+    --fs-unit: 16px;
+    --fs-mono: 15px;
+  }
+}
